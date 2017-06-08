@@ -1,0 +1,96 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>service-avg-feature</artifactId>
+
+	<parent>
+		<groupId>com.epam.training</groupId>
+		<artifactId>service-avg</artifactId>
+		<version>1.0</version>
+	</parent>
+
+	<properties>
+		<karaf-maven-plugin.version>4.1.1</karaf-maven-plugin.version>
+		<build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
+		<path.fiature.xml>${project.basedir}/src/main/resources/feature.xml</path.fiature.xml>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.epam.training</groupId>
+			<artifactId>service-avg-bundle</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<sourceDirectory>src/main/resources</sourceDirectory>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<version>${build-helper-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>attach-artifacts</id>
+						<phase>package</phase>
+						<goals>
+							<goal>attach-artifact</goal>
+						</goals>
+						<configuration>
+							<artifacts>
+								<artifact>
+									<file>${path.fiature.xml}</file>
+									<type>xml</type>
+									<classifier>features</classifier>
+								</artifact>
+							</artifacts>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.karaf.tooling</groupId>
+				<artifactId>karaf-maven-plugin</artifactId>
+				<version>${karaf-maven-plugin.version}</version>
+				<executions>
+					<execution>
+						<id>create-kar</id>
+						<phase>install</phase>
+						<goals>
+							<goal>kar</goal>
+						</goals>
+						<configuration>
+							<featuresFile>${path.fiature.xml}</featuresFile>
+						</configuration>
+					</execution>
+				</executions>
+				<configuration>
+					<aggregateFeatures>true</aggregateFeatures>
+				</configuration>
+			</plugin>
+
+			<!-- AUTOGENERATION feature.xml -->
+			<!-- <plugin> -->
+			<!-- <groupId>org.apache.karaf.tooling</groupId> -->
+			<!-- <artifactId>karaf-maven-plugin</artifactId> -->
+			<!-- <version>${karaf-maven-plugin.version}</version> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>features-generate-descriptor</id> -->
+			<!-- <phase>package</phase> -->
+			<!-- <goals> -->
+			<!-- <goal>features-generate-descriptor</goal> -->
+			<!-- </goals> -->
+			<!-- <configuration> -->
+			<!-- <outputFile> -->
+			<!-- ${path.fiature.xml} -->
+			<!-- </outputFile> -->
+			<!-- </configuration> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
+		</plugins>
+	</build>
+</project>

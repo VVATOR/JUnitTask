@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<features xmlns="http://karaf.apache.org/xmlns/features/v1.4.0" name="service-avg">
+    <repository>mvn:org.apache.cxf.karaf/apache-cxf/3.1.10/xml/features</repository>
+    <feature name="service-avg-feature" description="service-avg-feature" version="1.0">
+        <feature prerequisite="true" dependency="false">wrap</feature>
+        <feature prerequisite="true" version="3.1.10">cxf</feature>
+        <feature prerequisite="true" version="3.1.10">cxf-http</feature>
+        <feature prerequisite="true" version="3.1.10">cxf-jaxws</feature>
+        <bundle>mvn:com.epam.training/service-avg-api-bundle/1.0</bundle>
+        <bundle>mvn:com.epam.training/service-avg-bundle/1.0</bundle>
+    </feature>
+</features>
