@@ -4,13 +4,13 @@
   <summary>TASK</summary>
 <pre>
 
-
 Integrate Junit tests for all testable methods/ classes in service created in OSGi / Karaf module.
+(https://github.com/VVATOR/service-avg)
 
 Implement Mock object for data source class (DB connection and etc.) and use it in tests.
 
-Use “MethodName_StateUnderTest_ExpectedBehavior” Naming Convention( https://dzone.com/articles/7-popular-unit-test-naming)
-
+Use “MethodName_StateUnderTest_ExpectedBehavior” Naming Convention
+(https://dzone.com/articles/7-popular-unit-test-naming)
 
 </pre>
 </details>
